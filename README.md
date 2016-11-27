@@ -17,6 +17,12 @@ Tamir Kamai and Nicolas M. Thiéry
 - https://ipython.readthedocs.io/en/stable/interactive/plotting.html
 - https://blog.dominodatalab.com/interactive-dashboards-in-jupyter/
 
+## Running tests
+
+For now:
+
+    python -m doctest temp_codes/ls_5.py   # same for friends
+
 ## TODO
 
 - [ ] Widgets to upload / download data
