@@ -1,11 +1,14 @@
+# -*- coding: utf-8 -*-
 import os
 import sys
 
 #from numpy import *
-import numpy
 from pylab import *
+import numpy
 import scipy.special
 import scipy.optimize
+import matplotlib.pyplot as plt
+
 
 def lin_sourc_r(x,t,p):
     t0,q,rho,c,lamda=p
@@ -43,37 +46,29 @@ def lin_sourc_r(x,t,p):
 def objective(x,t,p,y0,func):
     return y0 - func(x,t,p)
 
+def line_source(t0=8,
+                tim=r_[1:180:0.5],
+                q=85,
+                rho=1000,
+                lamda=0.6,
+                c=4174,
+                r=0.006):
 
-t0=8
-tim=r_[1:180:0.5]
+    kapa=0.6/(rho*c),
+    r_sq=r**2,
+    #t0,q,rho,c,lamda=p
+    p=[t0,q,rho,c,lamda]
+    y_noer=lin_sourc_r(r,tim,p)
+    er=0.01*numpy.random.standard_normal(len(tim))
+    y_er=y_noer+er
 
-q=85
-rho=1000
-lamda=0.6
-c=4174
-kapa=0.6/(rho*c)
-r=0.006
-r_sq=r**2
+    function=lin_sourc_r
+    param=(tim,p,y_er,function)
+    x0=0.005
+    #r_fit, cov_x, infodict, mesg, ier = scipy.optimize.minpack.leastsq(objective,x0,args=param,full_output=True,warning=True)
+    r_fit, cov_x, infodict, mesg, ier = scipy.optimize.minpack.leastsq(objective,x0,args=param,full_output=True)
+    #print r_fit
 
-#t0,q,rho,c,lamda=p
-p=[t0,q,rho,c,lamda]
+    y_fit=lin_sourc_r(r_fit,tim,p)
 
-y_noer=lin_sourc_r(r,tim,p)
-er=0.01*numpy.random.standard_normal(len(tim))
-y_er=y_noer+er
-
-function=lin_sourc_r
-param=(tim,p,y_er,function)
-x0=0.005
-r_fit, cov_x, infodict, mesg, ier = scipy.optimize.minpack.leastsq(objective,x0,args=param,full_output=True,warning=True)
-print r_fit
-
-y_fit=lin_sourc_r(r_fit,tim,p)
-
-plot(tim,y_er,'.')
-plot(tim,y_fit,'r')
-xlabel('Time (sec)')
-ylabel('$\Delta$ T (\xb0C)')
-text(t0+50,0.1,r_fit)
-
-show()
+    return tim, y_er, y_fit
