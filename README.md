@@ -35,6 +35,7 @@ Notes on local installation (Ubuntu/Mint):
     sudo pip3 install jupyter
     sudo pip3 install matplotlib
     sudo pip3 install scipy
+    sudo pip3 install pandas
     jupyter nbextension enable --py widgetsnbextension
 
     python3 -m ipykernel install --user
