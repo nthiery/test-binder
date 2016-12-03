@@ -1,4 +1,4 @@
-# test-binder
+# test-binder: Testing binder services for deploying mini form-based web services for earth sciences
 
 A code sprint with a friend from earth sciences to test technologies
 like Jupyter, ipywidgets, binder & friends to make computational code
