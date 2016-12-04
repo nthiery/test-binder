@@ -1,7 +1,6 @@
 import pandas
 import numpy
 from io import StringIO
-from temp_codes.ls_5 import line_source
 
 class DataSet:
     def __init__(self, file=None, csv=None):
@@ -43,6 +42,3 @@ class DataSet:
         # TODO: determine the first i such that t > 0
         #return t.iloc[10:] - ti.mean()
         return t.iloc[11:] - ti.mean()
-
-    def line_source(self, **kwargs):
-        return line_source(tim=numpy.asarray(self.temperature_responses.keys()), **kwargs)
