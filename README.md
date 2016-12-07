@@ -2,7 +2,7 @@
 
 A code sprint with a friend from earth sciences to test technologies
 like Jupyter, ipywidgets, binder & friends to make computational code
-trivially accessible to end-user through a form-based web-interface.
+trivially accessible to end-user through a mini form-based web-app.
 
 [![Binder](http://mybinder.org/badge.svg)](http://mybinder.org:/repo/nthiery/test-binder/)
 
@@ -17,31 +17,52 @@ Tamir Kamai and Nicolas M. Thiéry
 - https://ipython.readthedocs.io/en/stable/interactive/plotting.html
 - https://blog.dominodatalab.com/interactive-dashboards-in-jupyter/
 
+## Local installation
+
+    sudo apt install python3-pip
+    sudo pip3 install --upgrade --user pip   # Not necessarily needed
+    sudo pip3 install --user -e .
+
+May be needed:
+
+    jupyter nbextension enable --py widgetsnbextension
+    python3 -m ipykernel install --user
+
 ## Running tests
 
 For now:
 
     python -m doctest temp_codes/ls_5.py   # same for friends
 
-## TODO
+## Future work
 
-- [ ] Widgets to upload / download data
-- [ ] Automatic execution of the notebook
-- [ ] Hiding of the code
-- [ ] Make this repo into a pip package for ease of local install
-- [ ] Mini workflow manager: input type / processing / output
-- [ ] Types for the input
+### Bugs
 
-## Local installation
+- [ ] ipywidgets are currently broken on mybinder.org: This should be
+      fixed soon. Otherwise, report!
 
-Notes on local installation (Ubuntu/Mint):
+### Features
 
-    sudo apt install python3
-    sudo pip3 install --upgrade pip
-    sudo pip3 install jupyter
-    sudo pip3 install matplotlib
-    sudo pip3 install scipy
-    sudo pip3 install pandas
-    jupyter nbextension enable --py widgetsnbextension
+- [X] Simple workflow manager: input type / processing / output:
+      Could be abstracted away
 
-    python3 -m ipykernel install --user
+- [ ] Widgets to upload / download data:
+      Done for loading
+
+- [ ] Automatic execution of the notebook:
+      Comment by Min: this not yet implemented; it should be easy to
+      implement this. Of course this would only be activated for
+      trusted notebooks; that's fine since binder trusts all notebooks
+      by default.
+
+- [ ] Hiding of the code:
+      This feature will be easier to implement with
+      JupyterLab. Hopefuly to come in the coming year. For now, the
+      best would be to put all the code in Python files, and just have
+      a trivial notebook with just "from app import App; App().run()".
+
+- [ ] Types for the input: done experimentaly
+
+### Potential design
+
+TODO
