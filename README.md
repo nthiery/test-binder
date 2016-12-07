@@ -12,9 +12,9 @@ Tamir Kamai and Nicolas M. Thiéry
 
 ## Demonstrator notebooks
 
-- [minimal.ipynb](): an interact-based minimal web-app
-- [file_upload_example.ipynb](): same, with a file upload widget
-- [application.ipynb](): a more complete widget-based web-app
+- [](minimal.ipynb): an interact-based minimal web-app
+- [](file_upload_example.ipynb): same, with a file upload widget
+- [](application.ipynb): a more complete widget-based web-app
 
 ## References
 
