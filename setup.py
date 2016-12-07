@@ -33,6 +33,6 @@ setup(
     keywords='binder jupyter',
     py_modules=find_packages(),
     setup_requires=['pytest-runner'],
-    install_requires=['scipy', 'matplotlib', 'pandas'],
+    install_requires=['scipy', 'matplotlib', 'pandas', 'jupyter'],
     tests_require=['pytest'],
 )
